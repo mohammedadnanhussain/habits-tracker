@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@theme {
+  --color-chassis: #DCE3EA;
+  --color-plate: #F5F8FA;
+  --color-ink: #121C2B;
+  --color-cobalt: #2356F6;
+  --color-cobalt-dark: #173ECC;
+  --color-amber: #F59E0B;
+  --color-steel: #5E7185;
+  --color-line: #CBD5E1;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+:root {
+  --bg-chassis: #DCE3EA;
+  --bg-plate: #F5F8FA;
+  --ink: #121C2B;
+  --cobalt: #2356F6;
+  --cobalt-dark: #173ECC;
+  --amber: #F59E0B;
+  --steel: #5E7185;
+  --line: #CBD5E1;
+}
+
+[data-theme="dark"] {
+  --bg-chassis: #0c121d;
+  --bg-plate: #151f2e;
+  --ink: #e6edf5;
+  --cobalt: #3b82f6;
+  --cobalt-dark: #2563eb;
+  --amber: #f59e0b;
+  --steel: #8fa0b5;
+  --line: #223247;
+}
+
+body {
+  background-color: var(--bg-chassis);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.instrument-card {
+  background-color: var(--bg-plate);
+  border: 1.5px solid #B8C4D0;
+  box-shadow: 0 4px 0 #BAC6D2, 0 8px 20px rgba(18, 28, 43, 0.06);
+}
+
+[data-theme="dark"] .instrument-card {
+  background-color: #151f2e;
+  border-color: #283a52;
+  box-shadow: 0 4px 0 #1b2738, 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.instrument-inset {
+  background-color: #E8EEF3;
+  border: 1px solid #C5D0DC;
+  box-shadow: inset 0 1px 3px rgba(18, 28, 43, 0.06);
+}
+
+[data-theme="dark"] .instrument-inset {
+  background-color: #0e1624;
+  border-color: #24354c;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.tactile-btn {
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+}
+
+.tactile-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Signature Continuity Rail styles */
+.streak-cell {
+  position: relative;
+  z-index: 2;
+  transition: all 0.18s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.streak-cell:hover {
+  transform: scale(1.1);
+}
+
+.streak-bridge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 8px;
+  transform: translateY(-50%);
+  z-index: 1;
+  pointer-events: none;
+  transition: all 0.25s ease;
+}
+
+.streak-bridge-active {
+  background: linear-gradient(90deg, #2356F6 0%, #3B82F6 50%, #2356F6 100%);
+  box-shadow: 0 0 8px rgba(35, 86, 246, 0.35);
+}
+
+.streak-bridge-amber {
+  background: linear-gradient(90deg, #2356F6 0%, #F59E0B 100%);
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #DCE3EA;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: #0c121d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94A3B8;
+  border-radius: 3px;
+}
+
+@keyframes pulsePop {
+  0% { transform: scale(0.95); }
+  50% { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+.animate-pop {
+  animation: pulsePop 0.2s ease-out;
+}
